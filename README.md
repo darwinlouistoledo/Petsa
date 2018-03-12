@@ -66,7 +66,7 @@ License
 ```
 MIT License
 
-Copyright (c) 2016 Darwin Louis Toledo
+Copyright (c) 2018 Darwin Louis Toledo
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
