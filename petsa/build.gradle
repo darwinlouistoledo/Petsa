@@ -1,0 +1,78 @@
+apply plugin: 'com.android.library'
+apply plugin: 'maven-publish'
+
+publishing {
+
+  def packageName = 'me.darwinlouistoledo'
+  def artifactName = 'petsa'
+  def libraryVersion = '1.0'
+  def outputAAR = ("$buildDir/outputs/aar/${project.getName()}-release.aar")
+
+  publications {
+    maven(MavenPublication) {
+      groupId packageName
+      artifactId artifactName
+      version = libraryVersion
+      artifact outputAAR
+    }
+    aar(MavenPublication) {
+      groupId packageName
+      artifactId artifactName
+      version = libraryVersion
+      artifact outputAAR
+    }
+  }
+}
+
+android {
+  compileSdkVersion 27
+
+  defaultConfig {
+    minSdkVersion 14
+    targetSdkVersion 27
+    versionCode 1
+    versionName "1.0"
+
+    testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+  }
+
+  buildTypes {
+    release {
+      minifyEnabled false
+      proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+    }
+  }
+}
+
+dependencies {
+  testImplementation 'junit:junit:4.12'
+}
+
+ext {
+  bintrayRepo = 'maven' //the maven repo name (created on bintray)
+  bintrayName = 'Petsa' //the name you want to give at your project on bintray
+  orgName = 'darwinlouistoledo' //your user name
+
+  publishedGroupId = 'me.darwinlouistoledo' //aaaa : the librairy group
+  artifact = 'petsa' //BBBB : the library name
+  libraryVersion = "1.0" //the librairy version
+
+  //the library will be : aaaa:BBBB:version
+
+  libraryName = 'Petsa'
+  libraryDescription = 'A simple library for formatting Date from and to a given format in Android.'
+
+  siteUrl = 'https://github.com/darwinlouistoledo/Petsa'
+  gitUrl = 'https://github.com/darwinlouistoledo/Petsa.git'
+
+  developerId = 'darwinlouistoledo'
+  developerName = 'Darwin Louis Toledo'
+  developerEmail = 'darwinlouistoledo@gmail.com'
+
+  licenseName = 'MIT License'
+  licenseUrl = 'https://opensource.org/licenses/MIT'
+  allLicenses = ["MIT License"]
+}
+
+apply from: rootProject.file('gradle/install-v1.gradle')
+apply from: rootProject.file('gradle/bintray-android-v1.gradle')
