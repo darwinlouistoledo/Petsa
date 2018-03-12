@@ -2,6 +2,24 @@
 A simple library for formatting Date from and to a given format in Android.
 
 
+# Gradle configuration
+First, you need to add this gradle configuration in your `build.gradle` file.
+
+```gradle
+repositories {
+    jcenter()
+}
+
+...
+
+dependencies {
+    ...
+    compile 'me.darwinlouistoledo:petsa:1.0'
+    ...
+}
+
+```
+
 # Usage
 
 Here are sample usage of the library. The `fomat()` method will return a String result.
