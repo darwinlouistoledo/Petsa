@@ -36,7 +36,7 @@ public interface Format {
    * If not set, the default {@link Locale#getDefault()} will be use.
    *
    * @param locale The locale of the date to be formatted and displayed
-   * @return
+   * @return Will return an implementation of {@link Format}
    */
   Format locale(Locale locale);
 

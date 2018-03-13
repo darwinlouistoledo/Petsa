@@ -44,7 +44,7 @@ public final class Petsa {
    * the date string given with its format.
    *
    * @param stringDate A string date representation
-   * @return
+   * @return Will return an implementation of {@link DateStringBuild}
    */
   public static DateStringBuild with(String stringDate){
     return FormatterFactory.createStringDateFormatter(stringDate);
@@ -55,7 +55,7 @@ public final class Petsa {
    * Then it will format to a format pattern that provided in method {@link DateFormatter#toPattern(String)}.
    *
    * @param date A Date object representation
-   * @return
+   * @return Will return an implementation of {@link DateObjectBuild}
    */
   public static DateObjectBuild with(Date date){
     return FormatterFactory.createDateFormatter(date);
@@ -66,7 +66,7 @@ public final class Petsa {
    * Then it will format to a format pattern that provided in method {@link MillisecondDateFormatter#toPattern(String)}.
    *
    * @param dateInMilliseconds A long value that represents the date in milliseconds
-   * @return
+   * @return Will return an implementation of {@link DateMillisBuild}
    */
   public static DateMillisBuild with(Long dateInMilliseconds){
     return FormatterFactory.createMillisecondDateFormatter(dateInMilliseconds);
