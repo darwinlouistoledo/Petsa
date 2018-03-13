@@ -14,7 +14,7 @@ repositories {
 
 dependencies {
     ...
-    compile 'me.darwinlouistoledo:petsa:1.0'
+    compile 'me.darwinlouistoledo:petsa:1.2'
     ...
 }
 
@@ -26,32 +26,31 @@ Here are sample usage of the library. The `fomat()` method will return a String 
 
 ```java
 Petsa.with(new Date())
-     .toFormat("MM/dd/yyyy").format();
-
+     .toPattern("MM/dd/yyyy").format();
 ```
 
 ```java
 Petsa.with(System.currentTimeMillis())
-     .toFormat("dd/MM/yyyy HH:mm")
+     .toPattern("dd/MM/yyyy HH:mm")
      .format();
 ```
 
 ```java
 Petsa.with("03/09/2018")
-     .fromFormat("MM/dd/yyyy")
-     .toFormat("MMMM dd, yyyy")
+     .fromPattern("MM/dd/yyyy")
+     .toPattern("MMMM dd, yyyy")
      .format();
 ```
 
 ```java
 Petsa.with(System.currentTimeMillis())
-     .toFormat("hh:mm aa")
+     .toPattern("hh:mm aa")
      .format();
 ```
 
 ```java
 Petsa.with(System.currentTimeMillis())
-     .toFormat("MMMM dd, yyyy hh:mm aa")
+     .toPattern("MMMM dd, yyyy hh:mm aa")
      .locale(Locale.JAPAN)
      .format();
 ```
