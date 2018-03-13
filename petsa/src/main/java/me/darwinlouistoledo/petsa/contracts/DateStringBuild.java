@@ -21,30 +21,40 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-package me.darwinlouistoledo.petsa;
-
-import java.util.Date;
-import me.darwinlouistoledo.petsa.contracts.DateMillisBuild;
-import me.darwinlouistoledo.petsa.contracts.DateObjectBuild;
-import me.darwinlouistoledo.petsa.contracts.DateStringBuild;
+package me.darwinlouistoledo.petsa.contracts;
 
 /*
- * Created by darwinlouistoledo on 09/03/2018.
- *
- * A factory class for creating the formatter for specific date given.
- *
+ * Created by darwinlouistoledo on 13/03/2018.
  */
+public interface DateStringBuild {
+  /**
+   * A method that accepts a string pattern in which the date
+   * given is currently formatted. This is a required method
+   * when String date is given.
+   *
+   * @param pattern A string pattern that you desire.
+   * @return Will return an implementation of {@link ToPattern}
+   */
+  ToPattern fromPattern(String pattern);
 
-final class FormatterFactory {
-  static DateObjectBuild createDateFormatter(Date date){
-    return new DateFormatter().date(date);
+  interface DateString {
+    /**
+     * It will accept a {@link String} object that will going to format.
+     *
+     * @param date The given date that will be formatted
+     * @return Will return an implementation of {@link DateStringBuild}
+     */
+    DateStringBuild date(String date);
   }
 
-  static DateStringBuild createStringDateFormatter(String date){
-    return new StringDateFormatter().date(date);
-  }
-
-  static DateMillisBuild createMillisecondDateFormatter(Long dateInMillis){
-    return new MillisecondDateFormatter().date(dateInMillis);
+  interface ToPattern{
+    /**
+     * A method that accepts a string pattern in which the date
+     * will be formatted and displayed according to it.
+     *
+     * @param pattern A string pattern that you desire.
+     * @return Will return an implementation of {@link Format}
+     */
+    Format toPattern(String pattern);
   }
 }

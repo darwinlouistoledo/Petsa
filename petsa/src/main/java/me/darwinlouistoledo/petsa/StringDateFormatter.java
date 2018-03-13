@@ -27,80 +27,60 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
+import me.darwinlouistoledo.petsa.contracts.DateStringBuild;
+import me.darwinlouistoledo.petsa.contracts.Format;
 
 /*
  * Created by darwinlouistoledo on 08/03/2018.
  */
-
-public final class StringDateFormatter {
-  private String fromFormat;
-  private String toFormat;
+final class StringDateFormatter implements DateStringBuild.DateString, DateStringBuild, DateStringBuild.ToPattern, Format {
+  private String fromPattern;
+  private String toPattern;
   private String givenDate;
   private Locale locale = Locale.getDefault();
 
   StringDateFormatter() {
   }
 
-  StringDateFormatter date(String date){
+  @Override public DateStringBuild date(String date){
     this.givenDate = date;
     return this;
   }
 
-  /**
-   * A method that accepts a string format in which the date
-   * will be formatted and displayed according to it.
-   *
-   * @param format A string format that you desire.
-   * @return
-   */
-  public StringDateFormatter toFormat(String format){
-    this.toFormat = format;
+
+  @Override public ToPattern fromPattern(String pattern) {
+    this.fromPattern = pattern;
     return this;
   }
 
-  /**
-   * A method that accepts a string format in which the date
-   * given is currently formatted. This is a required method
-   * when String date is given.
-   *
-   * @param format A string format that you desire.
-   * @return
-   */
-  public StringDateFormatter fromFormat(String format){
-    this.fromFormat = format;
+  @Override public Format toPattern(String pattern) {
+    this.toPattern = pattern;
     return this;
   }
 
-  /**
-   * A method that accepts a {@link Locale} in which the date will be
-   * formatted and displayed according to it.
-   *
-   * If not set, the default {@link Locale#getDefault()} will be use.
-   *
-   * @param locale The locale of the date to be formatted and displayed
-   * @return
-   */
-  public StringDateFormatter locale(Locale locale){
+
+  @Override public Format locale(Locale locale) {
     this.locale = locale;
     return this;
   }
 
-  /**
-   * A method that you need to call at the end in order to get the
-   * result of the formatted date.
-   *
-   * @return A string formatted date.
-   */
-  public String format() {
-    SimpleDateFormat sdfFrom = new SimpleDateFormat(fromFormat, locale);
+  @Override public String format() {
+
+    if (this.givenDate ==  null || this.givenDate.isEmpty())
+      throw new RuntimeException("Date given cannot be null or empty.");
+
+    if (this.toPattern ==  null || this.toPattern.isEmpty())
+      throw new RuntimeException("toPattern cannot be null or empty.");
+
+    if (this.fromPattern == null || this.fromPattern.isEmpty())
+      throw new RuntimeException("fromPattern cannot be null or empty.");
 
     try {
+      SimpleDateFormat sdfFrom = new SimpleDateFormat(fromPattern, locale);
       Date date = sdfFrom.parse(givenDate);
-      return new SimpleDateFormat(toFormat, locale).format(date);
+      return new SimpleDateFormat(toPattern, locale).format(date);
     } catch (ParseException e) {
-      e.printStackTrace();
+      throw new RuntimeException(e.getMessage());
     }
-
-    throw new RuntimeException("Problem parsing the date given. Kindly make sure that the given date is same format with fromFormat.");
   }
 }

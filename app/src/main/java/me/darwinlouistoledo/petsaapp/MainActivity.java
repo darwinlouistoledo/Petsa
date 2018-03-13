@@ -38,29 +38,31 @@ public class MainActivity extends AppCompatActivity {
 
     Log.d("PETSA",
         Petsa.with(new Date())
-            .toFormat("MM/dd/yyyy").format());
+            .toPattern("MM/dd/yyyy")
+            .format());
 
     Log.d("PETSA",
         Petsa.with(System.currentTimeMillis())
-            .toFormat("dd/MM/yyyy HH:mm")
+            .toPattern("dd/MM/yyyy HH:mm")
             .format());
 
     Log.d("PETSA",
         Petsa.with("03/09/2018")
-            .fromFormat("MM/dd/yyyy")
-            .toFormat("MMMM dd, yyyy")
+            .fromPattern("MM/dd/yyyy")
+            .toPattern("MMMM dd, yyyy")
             .format());
 
     Log.d("PETSA",
         Petsa.with(System.currentTimeMillis())
-            .toFormat("hh:mm aa")
+            .toPattern("hh:mm aa")
             .format());
 
     Log.d("PETSA",
         Petsa.with(System.currentTimeMillis())
-            .toFormat("MMMM dd, yyyy hh:mm aa")
+            .toPattern("MMMM dd, yyyy hh:mm aa")
             .locale(Locale.JAPAN)
             .format());
+
 
   }
 }

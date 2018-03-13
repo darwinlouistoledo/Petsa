@@ -5,7 +5,7 @@ publishing {
 
   def packageName = 'me.darwinlouistoledo'
   def artifactName = 'petsa'
-  def libraryVersion = '1.1'
+  def libraryVersion = '1.2'
   def outputAAR = ("$buildDir/outputs/aar/${project.getName()}-release.aar")
 
   publications {
@@ -30,8 +30,8 @@ android {
   defaultConfig {
     minSdkVersion 14
     targetSdkVersion 27
-    versionCode 2
-    versionName "1.1"
+    versionCode 3
+    versionName "1.2"
 
     testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
   }
@@ -55,7 +55,7 @@ ext {
 
   publishedGroupId = 'me.darwinlouistoledo' //aaaa : the librairy group
   artifact = 'petsa' //BBBB : the library name
-  libraryVersion = "1.1" //the librairy version
+  libraryVersion = "1.2" //the librairy version
 
   //the library will be : aaaa:BBBB:version
 

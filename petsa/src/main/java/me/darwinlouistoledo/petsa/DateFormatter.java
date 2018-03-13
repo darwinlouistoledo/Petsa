@@ -26,57 +26,42 @@ package me.darwinlouistoledo.petsa;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
+import me.darwinlouistoledo.petsa.contracts.DateObjectBuild;
+import me.darwinlouistoledo.petsa.contracts.Format;
 
 /*
  * Created by darwinlouistoledo on 08/03/2018.
  */
-
-public final class DateFormatter {
-  private String toFormat;
+final class DateFormatter implements DateObjectBuild, DateObjectBuild.DateObject, Format{
+  private String toPattern;
   private Date givenDate;
   private Locale locale = Locale.getDefault();
 
   DateFormatter() {
   }
 
-  DateFormatter date(Date givenDate){
+  @Override public DateObjectBuild date(Date givenDate){
     this.givenDate = givenDate;
     return this;
   }
 
-  /**
-   * A method that accepts a string format in which the date
-   * will be formatted and displayed according to it.
-   *
-   * @param format A string format that you desire.
-   * @return
-   */
-  public DateFormatter toFormat(String format){
-    this.toFormat = format;
+  @Override public Format toPattern(String pattern){
+    this.toPattern = pattern;
     return this;
   }
 
-  /**
-   * A method that accepts a {@link Locale} in which the date will be
-   * formatted and displayed according to it.
-   *
-   * If not set, the default {@link Locale#getDefault()} will be use.
-   *
-   * @param locale The locale of the date to be formatted and displayed
-   * @return
-   */
-  public DateFormatter locale(Locale locale){
+  @Override public Format locale(Locale locale){
     this.locale = locale;
     return this;
   }
 
-  /**
-   * A method that you need to call at the end in order to get the
-   * result of the formatted date.
-   *
-   * @return A string formatted date.
-   */
-  public String format() {
-    return new SimpleDateFormat(toFormat, locale).format(givenDate);
+  @Override public String format() {
+    if (this.givenDate ==  null)
+      throw new RuntimeException("Date given cannot be null.");
+
+    if (this.toPattern ==  null || this.toPattern.isEmpty())
+      throw new RuntimeException("toPattern cannot be null or empty.");
+
+    return new SimpleDateFormat(toPattern, locale).format(givenDate);
   }
 }

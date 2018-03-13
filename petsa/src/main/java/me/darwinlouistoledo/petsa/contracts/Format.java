@@ -21,30 +21,30 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-package me.darwinlouistoledo.petsa;
+package me.darwinlouistoledo.petsa.contracts;
 
-import java.util.Date;
-import me.darwinlouistoledo.petsa.contracts.DateMillisBuild;
-import me.darwinlouistoledo.petsa.contracts.DateObjectBuild;
-import me.darwinlouistoledo.petsa.contracts.DateStringBuild;
+import java.util.Locale;
 
 /*
- * Created by darwinlouistoledo on 09/03/2018.
- *
- * A factory class for creating the formatter for specific date given.
- *
+ * Created by darwinlouistoledo on 13/03/2018.
  */
+public interface Format {
+  /**
+   * A method that accepts a {@link Locale} in which the date will be
+   * formatted and displayed according to it.
+   *
+   * If not set, the default {@link Locale#getDefault()} will be use.
+   *
+   * @param locale The locale of the date to be formatted and displayed
+   * @return
+   */
+  Format locale(Locale locale);
 
-final class FormatterFactory {
-  static DateObjectBuild createDateFormatter(Date date){
-    return new DateFormatter().date(date);
-  }
-
-  static DateStringBuild createStringDateFormatter(String date){
-    return new StringDateFormatter().date(date);
-  }
-
-  static DateMillisBuild createMillisecondDateFormatter(Long dateInMillis){
-    return new MillisecondDateFormatter().date(dateInMillis);
-  }
+  /**
+   * You need to call this at the end in order to get the
+   * result of the formatted date.
+   *
+   * @return A string formatted date.
+   */
+  String format();
 }

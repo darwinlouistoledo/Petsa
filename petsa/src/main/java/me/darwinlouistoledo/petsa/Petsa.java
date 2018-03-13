@@ -24,6 +24,9 @@
 package me.darwinlouistoledo.petsa;
 
 import java.util.Date;
+import me.darwinlouistoledo.petsa.contracts.DateMillisBuild;
+import me.darwinlouistoledo.petsa.contracts.DateObjectBuild;
+import me.darwinlouistoledo.petsa.contracts.DateStringBuild;
 
 /*
  * Created by darwinlouistoledo on 08/03/2018.
@@ -35,37 +38,37 @@ public final class Petsa {
 
   /**
    * Static method that will accept a String date value. (e.g 03/19/1992).
-   * Then it will format to a format pattern that provided in method {@link StringDateFormatter#toFormat(String)}.
+   * Then it will format to a format pattern that provided in method {@link StringDateFormatter#fromPattern(String)}.
    *
-   * When using this, the {@link StringDateFormatter#fromFormat(String)} method is required as it needs to parse
+   * When using this, the {@link StringDateFormatter#fromPattern(String)} method is required as it needs to parse
    * the date string given with its format.
    *
    * @param stringDate A string date representation
    * @return
    */
-  public static StringDateFormatter with(String stringDate){
+  public static DateStringBuild with(String stringDate){
     return FormatterFactory.createStringDateFormatter(stringDate);
   }
 
   /**
    * Static method that will accept a Date object.
-   * Then it will format to a format pattern that provided in method {@link DateFormatter#toFormat(String)}.
+   * Then it will format to a format pattern that provided in method {@link DateFormatter#toPattern(String)}.
    *
    * @param date A Date object representation
    * @return
    */
-  public static DateFormatter with(Date date){
+  public static DateObjectBuild with(Date date){
     return FormatterFactory.createDateFormatter(date);
   }
 
   /**
    * Static method that will accept a Long date value in milliseconds.
-   * Then it will format to a format pattern that provided in method {@link MillisecondDateFormatter#toFormat(String)}.
+   * Then it will format to a format pattern that provided in method {@link MillisecondDateFormatter#toPattern(String)}.
    *
    * @param dateInMilliseconds A long value that represents the date in milliseconds
    * @return
    */
-  public static MillisecondDateFormatter with(Long dateInMilliseconds){
+  public static DateMillisBuild with(Long dateInMilliseconds){
     return FormatterFactory.createMillisecondDateFormatter(dateInMilliseconds);
   }
 
