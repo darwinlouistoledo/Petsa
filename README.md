@@ -14,7 +14,7 @@ repositories {
 
 dependencies {
     ...
-    compile 'me.darwinlouistoledo:petsa:1.2'
+    implement 'me.darwinlouistoledo:petsa:1.2'
     ...
 }
 
