@@ -14,7 +14,7 @@ repositories {
 
 dependencies {
     ...
-    implement 'me.darwinlouistoledo:petsa:1.2'
+    implementation 'me.darwinlouistoledo:petsa:1.2'
     ...
 }
 
