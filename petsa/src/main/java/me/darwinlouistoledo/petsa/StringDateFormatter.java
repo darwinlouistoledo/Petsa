@@ -27,6 +27,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
+import me.darwinlouistoledo.petsa.constants.DateTimePatterns;
 import me.darwinlouistoledo.petsa.contracts.DateStringBuild;
 import me.darwinlouistoledo.petsa.contracts.Format;
 
@@ -53,11 +54,20 @@ final class StringDateFormatter implements DateStringBuild.DateString, DateStrin
     return this;
   }
 
+  @Override public ToPattern fromPattern(DateTimePatterns format) {
+    this.fromPattern = format.value();
+    return this;
+  }
+
   @Override public Format toPattern(String pattern) {
     this.toPattern = pattern;
     return this;
   }
 
+  @Override public Format toPattern(DateTimePatterns format) {
+    this.toPattern = format.value();
+    return this;
+  }
 
   @Override public Format locale(Locale locale) {
     this.locale = locale;

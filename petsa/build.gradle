@@ -1,52 +1,12 @@
-apply plugin: 'com.android.library'
+apply plugin: 'java-library'
 apply plugin: 'maven-publish'
 
-publishing {
-
-  def packageName = 'me.darwinlouistoledo'
-  def artifactName = 'petsa'
-  def libraryVersion = '1.2'
-  def outputAAR = ("$buildDir/outputs/aar/${project.getName()}-release.aar")
-
-  publications {
-    maven(MavenPublication) {
-      groupId packageName
-      artifactId artifactName
-      version = libraryVersion
-      artifact outputAAR
-    }
-    aar(MavenPublication) {
-      groupId packageName
-      artifactId artifactName
-      version = libraryVersion
-      artifact outputAAR
-    }
-  }
-}
-
-android {
-  compileSdkVersion 27
-
-  defaultConfig {
-    minSdkVersion 14
-    targetSdkVersion 27
-    versionCode 3
-    versionName "1.2"
-
-    testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
-  }
-
-  buildTypes {
-    release {
-      minifyEnabled false
-      proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
-    }
-  }
-}
-
 dependencies {
-  testImplementation 'junit:junit:4.12'
+  implementation fileTree(dir: 'libs', include: ['*.jar'])
 }
+
+sourceCompatibility = "1.8"
+targetCompatibility = "1.8"
 
 ext {
   bintrayRepo = 'maven' //the maven repo name (created on bintray)
@@ -54,10 +14,10 @@ ext {
   orgName = 'darwinlouistoledo' //your user name
 
   publishedGroupId = 'me.darwinlouistoledo' //aaaa : the librairy group
-  artifact = 'petsa' //BBBB : the library name
-  libraryVersion = "1.2" //the librairy version
+  artifact = 'petsa' //petsa : the library name
+  libraryVersion = "1.3" //the librairy version
 
-  //the library will be : aaaa:BBBB:version
+  //the library will be : me.darwinlouistoledo:petsa:version
 
   libraryName = 'Petsa'
   libraryDescription = 'A simple library for formatting Date from and to a given format in Android.'
@@ -67,12 +27,12 @@ ext {
 
   developerId = 'darwinlouistoledo'
   developerName = 'Darwin Louis Toledo'
-  developerEmail = 'darwinlouistoledo@gmail.com'
+  developerEmail = 'darwin.louis.toledo@gmail.com'
 
   licenseName = 'MIT License'
   licenseUrl = 'https://opensource.org/licenses/MIT'
   allLicenses = ["MIT License"]
 }
 
-apply from: rootProject.file('gradle/install-v1.gradle')
-apply from: rootProject.file('gradle/bintray-android-v1.gradle')
+//apply from: rootProject.file('gradle/install-java-v1.gradle')
+apply from: rootProject.file('gradle/bintray-java-v1.gradle')

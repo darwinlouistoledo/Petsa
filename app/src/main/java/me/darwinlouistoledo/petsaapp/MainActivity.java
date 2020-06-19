@@ -24,11 +24,12 @@
 package me.darwinlouistoledo.petsaapp;
 
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import androidx.appcompat.app.AppCompatActivity;
 import java.util.Date;
 import java.util.Locale;
 import me.darwinlouistoledo.petsa.Petsa;
+import me.darwinlouistoledo.petsa.constants.DateTimePatterns;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -36,33 +37,123 @@ public class MainActivity extends AppCompatActivity {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_main);
 
-    Log.d("PETSA",
+    Log.d("PETSA: Object",
         Petsa.with(new Date())
             .toPattern("MM/dd/yyyy")
             .format());
 
-    Log.d("PETSA",
+    Log.d("PETSA: Object",
+        Petsa.with(new Date())
+            .toPattern(DateTimePatterns.COMPLETE_LONG_DATE_1)
+            .format());
+
+    Log.d("PETSA: Object",
+        Petsa.with(new Date())
+            .toPattern(DateTimePatterns.COMPLETE_LONG_DATE_2)
+            .format());
+
+    Log.d("PETSA: Object",
+        Petsa.with(new Date())
+            .toPattern(DateTimePatterns.COMPLETE_SHORT_DATE_1)
+            .format());
+
+    Log.d("PETSA: Object",
+        Petsa.with(new Date())
+            .toPattern(DateTimePatterns.COMPLETE_SHORT_DATE_2)
+            .format());
+
+    Log.d("PETSA: Object",
+        Petsa.with(new Date())
+            .toPattern(DateTimePatterns.LONG_DATE_1)
+            .format());
+
+    Log.d("PETSA: Object",
+        Petsa.with(new Date())
+            .toPattern(DateTimePatterns.LONG_DATE_2)
+            .format());
+
+    Log.d("PETSA: Object",
+        Petsa.with(new Date())
+            .toPattern(DateTimePatterns.LONG_DATE_3)
+            .format());
+
+    Log.d("PETSA: Object",
+        Petsa.with(new Date())
+            .toPattern(DateTimePatterns.LONG_DATE_4)
+            .format());
+
+    Log.d("PETSA: Object",
+        Petsa.with(new Date())
+            .toPattern(DateTimePatterns.MEDIUM_DATE_1)
+            .format());
+
+    Log.d("PETSA: Object",
+        Petsa.with(new Date())
+            .toPattern(DateTimePatterns.MEDIUM_DATE_2)
+            .format());
+
+    Log.d("PETSA: Object",
+        Petsa.with(new Date())
+            .toPattern(DateTimePatterns.MEDIUM_DATE_3)
+            .format());
+
+    Log.d("PETSA: Object",
+        Petsa.with(new Date())
+            .toPattern(DateTimePatterns.MEDIUM_DATE_4)
+            .format());
+
+    Log.d("PETSA: Object",
+        Petsa.with(new Date())
+            .toPattern(DateTimePatterns.SHORT_DATE_1)
+            .format());
+
+    Log.d("PETSA: Object",
+        Petsa.with(new Date())
+            .toPattern(DateTimePatterns.SHORT_DATE_2)
+            .format());
+
+    Log.d("PETSA: Object",
+        Petsa.with(new Date())
+            .toPattern(DateTimePatterns.TIME_12H)
+            .format());
+
+    Log.d("PETSA: Object",
+        Petsa.with(new Date())
+            .toPattern(DateTimePatterns.TIME_24H)
+            .format());
+
+    Log.d("PETSA: Millis",
         Petsa.with(System.currentTimeMillis())
             .toPattern("dd/MM/yyyy HH:mm")
             .format());
 
-    Log.d("PETSA",
-        Petsa.with("03/09/2018")
+    Log.d("PETSA: Millis",
+        Petsa.with(System.currentTimeMillis())
+            .toPattern(DateTimePatterns.LONG_DATE_1)
+            .format());
+
+    Log.d("PETSA: String",
+        Petsa.with("03/09/2020")
             .fromPattern("MM/dd/yyyy")
             .toPattern("MMMM dd, yyyy")
             .format());
 
-    Log.d("PETSA",
+    Log.d("PETSA: String",
+        Petsa.with("03/09/2020")
+            .fromPattern(DateTimePatterns.MEDIUM_DATE_1)
+            .toPattern(DateTimePatterns.LONG_DATE_2)
+            .format());
+
+    Log.d("PETSA: Millis",
         Petsa.with(System.currentTimeMillis())
             .toPattern("hh:mm aa")
             .format());
 
-    Log.d("PETSA",
+    Log.d("PETSA: Millis",
         Petsa.with(System.currentTimeMillis())
             .toPattern("MMMM dd, yyyy hh:mm aa")
             .locale(Locale.JAPAN)
             .format());
-
 
   }
 }

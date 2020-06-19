@@ -26,6 +26,7 @@ package me.darwinlouistoledo.petsa;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
+import me.darwinlouistoledo.petsa.constants.DateTimePatterns;
 import me.darwinlouistoledo.petsa.contracts.DateMillisBuild;
 import me.darwinlouistoledo.petsa.contracts.Format;
 
@@ -47,6 +48,11 @@ final class MillisecondDateFormatter implements DateMillisBuild.DateMillis, Date
 
   @Override public Format toPattern(String pattern){
     this.toPattern = pattern;
+    return this;
+  }
+
+  @Override public Format toPattern(DateTimePatterns pattern) {
+    this.toPattern = pattern.value();
     return this;
   }
 

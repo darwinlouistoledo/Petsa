@@ -23,6 +23,8 @@
  */
 package me.darwinlouistoledo.petsa.contracts;
 
+import me.darwinlouistoledo.petsa.constants.DateTimePatterns;
+
 /*
  * Created by darwinlouistoledo on 13/03/2018.
  */
@@ -36,6 +38,16 @@ public interface DateStringBuild {
    * @return Will return an implementation of {@link ToPattern}
    */
   ToPattern fromPattern(String pattern);
+
+  /**
+   * A method that accepts a string pattern in which the date
+   * given is currently formatted. This is a required method
+   * when String date is given.
+   *
+   * @param pattern {@link DateTimePatterns} A predefine pattern that you can use.
+   * @return Will return an implementation of {@link ToPattern}
+   */
+  ToPattern fromPattern(DateTimePatterns pattern);
 
   interface DateString {
     /**
@@ -56,5 +68,14 @@ public interface DateStringBuild {
      * @return Will return an implementation of {@link Format}
      */
     Format toPattern(String pattern);
+
+    /**
+     * A method that accepts a string pattern in which the date
+     * will be formatted and displayed according to it.
+     *
+     * @param pattern {@link DateTimePatterns} A predefine pattern that you can use.
+     * @return Will return an implementation of {@link Format}
+     */
+    Format toPattern(DateTimePatterns pattern);
   }
 }
