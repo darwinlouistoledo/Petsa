@@ -21,7 +21,7 @@ dependencies {
 ```
 
 ## Usage
-  Here are sample usage of the library. The `fomat()` method will return a String result.
+  Here are sample usage of the library. The `format()` method will return a String result.
 
 ```java
 //Sample Result in String: 06/20/2020
