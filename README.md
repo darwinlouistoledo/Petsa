@@ -56,7 +56,7 @@ Petsa.with("03/09/2018")
 //Sample Result in String: March 09, 2020
 Petsa.with("03/09/2018")
      .fromPattern(DateTimePatterns.MEDIUM_DATE_1)
-	 .toPattern(DateTimePatterns.LONG_DATE_2)
+     .toPattern(DateTimePatterns.LONG_DATE_2)
      .format();
 ```
 ```java
